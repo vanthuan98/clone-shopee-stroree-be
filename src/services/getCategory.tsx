@@ -1,5 +1,5 @@
-const getProducts = async () => {
-  const url = 'https://web-api.storee.be/shop-products';
+const getCategory = async () => {
+  const url = 'https://web-api.storee.be/categories';
   const response = await fetch(url, {
     headers: {
       'Domain-Name': 'shopee.storee.be',
@@ -10,4 +10,4 @@ const getProducts = async () => {
   return data;
 };
 
-export default getProducts;
+export default getCategory;

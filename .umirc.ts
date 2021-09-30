@@ -8,7 +8,10 @@ export default defineConfig({
     { path: '/', redirect: '/home', component: '@/pages/index' },
     { path: '/home', component: '@/pages/home/Home' },
     { path: '/category/:id/', redirect: '/category/:id/all', component: '@/pages/categories/Categories' },
-    { path: '/category/:id/all', component: '@/pages/categories/Categories' }
+    { path: '/category/:id/all', component: '@/pages/categories/Categories' },
   ],
   fastRefresh: {},
+  dva: {
+    hmr: true,
+  },
 });
