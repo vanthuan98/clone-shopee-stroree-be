@@ -3,12 +3,13 @@ import { Row, Col } from 'react-bootstrap';
 import prod1 from '@/assets/images/prod1.png';
 import imgDefault from '@/assets/images/imgdefault.svg';
 import { Link } from 'umi';
+import { convertNumber } from '@/utils/convertNumber';
 
 interface product {
   name: string;
   id: string;
   price: number;
-  photos: any;
+  photos: any[];
 }
 
 const Related = () => {
@@ -30,13 +31,11 @@ const Related = () => {
         },
       });
       const responseData = await response.json();
-
       const { data } = responseData;
-
       const { list } = data;
-
       setProducts(list);
     };
+
     fetchData();
   }, []);
 
@@ -46,7 +45,6 @@ const Related = () => {
         <h2>Giới thiệu đến bạn</h2>
         <a href="#">Xem thêm</a>
       </div>
-
       <Row>
         {products.map((product: product) => (
           <Col key={product.id}>
@@ -60,7 +58,7 @@ const Related = () => {
                 </div>
                 <div className="content-prod">
                   <p>{product.name}</p>
-                  <span>{convertPriceThousand(product.price)}đ</span>
+                  <span>{convertNumber(product.price)}đ</span>
                 </div>
               </div>
             </Link>

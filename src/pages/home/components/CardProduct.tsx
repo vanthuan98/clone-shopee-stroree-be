@@ -4,16 +4,10 @@ import prod1 from '@/assets/images/prod1.png';
 import imgDefault from '@/assets/images/imgdefault.svg';
 import { VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { Link } from 'umi';
+import { convertNumber } from '@/utils/convertNumber';
 
 const CardProduct = ({ item }: any) => {
   const visibility = React.useContext(VisibilityContext);
-
-  const convertPriceThousand = (price: number) => {
-    const pattern = /(\d)(?=(\d{3})+(?!\d))/g;
-    const repl = '$1.';
-    const string = String(price);
-    return string.replace(pattern, repl);
-  };
 
   const visible = visibility.isItemVisible(item.id);
 
@@ -26,7 +20,7 @@ const CardProduct = ({ item }: any) => {
           </div>
           <div className="content-prod">
             <p>{item.name}</p>
-            <span>{convertPriceThousand(item.price)}đ</span>
+            <span>{convertNumber(item.price)}đ</span>
           </div>
         </div>
       </Link>
