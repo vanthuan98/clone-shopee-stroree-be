@@ -5,10 +5,10 @@ import imgDefault from '@/assets/images/imgdefault.svg';
 import { VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { Link } from 'umi';
 
-const CardProduct = ({ item }) => {
+const CardProduct = ({ item }: any) => {
   const visibility = React.useContext(VisibilityContext);
 
-  const convertPriceThousand = (price) => {
+  const convertPriceThousand = (price: number) => {
     const pattern = /(\d)(?=(\d{3})+(?!\d))/g;
     const repl = '$1.';
     const string = String(price);

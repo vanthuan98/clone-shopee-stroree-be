@@ -4,11 +4,16 @@ import iconSearch from '@/assets/images/icon-search.svg';
 import './searchForm.less';
 import getProducts from '@/services/getProducts';
 
+interface item {
+  id: string;
+  name: string;
+}
+
 const SearchForm = () => {
   const [result, setResult] = useState([]);
 
   const inputGroup = document.querySelector('.form-control');
-  const modalResultSearch = document.querySelector('.modal-result-search');
+  const modalResultSearch = document.querySelector<HTMLElement>('.modal-result-search')!;
   window.onclick = (e) => {
     if (e.target !== inputGroup) {
       modalResultSearch.style.display = 'none';
@@ -17,7 +22,7 @@ const SearchForm = () => {
     }
   };
 
-  const handleSearchProduct = (e) => {
+  const handleSearchProduct = (e: any) => {
     const keyword = e.target.value;
 
     if (keyword.trim() === '') {
@@ -30,7 +35,7 @@ const SearchForm = () => {
       try {
         const response = await getProducts();
         const { list } = response;
-        const result = list.filter((item) => {
+        const result = list.filter((item: any) => {
           const name = item.name.toLowerCase();
           console.log(keyword);
 
@@ -63,7 +68,7 @@ const SearchForm = () => {
       <div className="modal-result-search">
         {result.length === 0 ? null : (
           <ul className="has-result">
-            {result.map((item) => (
+            {result.map((item: item) => (
               <li key={item.id}>
                 <a href="#">{item.name}</a>
               </li>

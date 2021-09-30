@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'umi';
 
 const Breadcrumb = () => {
-  const params = useParams();
+  const params: any = useParams();
 
   const [categories, setCategories] = useState([]);
   const [categoriesForId, setCategoriesForId] = useState([]);
@@ -21,7 +21,7 @@ const Breadcrumb = () => {
     getCategoryRequest();
   }, []);
 
-  const category = categories.filter((category) => category.id === params.id);
+  const category: any = categories.filter((category: any) => category.id === params.id);
 
   return (
     <div className="breadcrumb">

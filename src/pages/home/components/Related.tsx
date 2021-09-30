@@ -4,10 +4,17 @@ import prod1 from '@/assets/images/prod1.png';
 import imgDefault from '@/assets/images/imgdefault.svg';
 import { Link } from 'umi';
 
+interface product {
+  name: string;
+  id: string;
+  price: number;
+  photos: any;
+}
+
 const Related = () => {
   const [products, setProducts] = useState([]);
 
-  const convertPriceThousand = (price) => {
+  const convertPriceThousand = (price: number) => {
     const pattern = /(\d)(?=(\d{3})+(?!\d))/g;
     const repl = '$1.';
     const string = String(price);
@@ -41,7 +48,7 @@ const Related = () => {
       </div>
 
       <Row>
-        {products.map((product) => (
+        {products.map((product: product) => (
           <Col key={product.id}>
             <Link to={`/product${product.id}`}>
               <div className="product-card">
